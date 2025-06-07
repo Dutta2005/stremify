@@ -79,14 +79,14 @@ export async function login(req, res) {
     if (!isPasswordCorrect) return res.status(401).json({ message: "Invalid email or password" });
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, {
-      expiresIn: "7d",
+      expiresIn: "604800s", // 7 days
     });
 
     res.cookie("jwt", token, {
       maxAge: 7 * 24 * 60 * 60 * 1000,
       httpOnly: true, // prevent XSS attacks,
-      sameSite: "strict", // prevent CSRF attacks
-      secure: process.env.NODE_ENV === "production",
+      sameSite: "none", // prevent CSRF attacks
+      secure: true,
     });
 
     res.status(200).json({ success: true, user });
