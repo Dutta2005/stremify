@@ -14,6 +14,7 @@ import PageLoader from "./components/PageLoader.jsx";
 import useAuthUser from "./hooks/useAuthUser.js";
 import Layout from "./components/Layout.jsx";
 import { useThemeStore } from "./store/useThemeStore.js";
+import NotFoundPage from "./pages/NotFound.jsx";
 
 const App = () => {
   const { isLoading, authUser } = useAuthUser();
@@ -101,8 +102,14 @@ const App = () => {
             )
           }
         />
-      </Routes>
 
+        <Route
+          path="*"
+          element={
+              <NotFoundPage />
+          }
+        />
+      </Routes>
       <Toaster />
     </div>
   );
