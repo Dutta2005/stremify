@@ -97,7 +97,12 @@ export async function login(req, res) {
 }
 
 export function logout(req, res) {
-  res.clearCookie("jwt");
+   const options = {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none"
+    };
+  res.clearCookie("jwt", options);
   res.status(200).json({ success: true, message: "Logout successful" });
 }
 
