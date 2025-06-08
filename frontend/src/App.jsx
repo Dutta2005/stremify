@@ -15,6 +15,7 @@ import useAuthUser from "./hooks/useAuthUser.js";
 import Layout from "./components/Layout.jsx";
 import { useThemeStore } from "./store/useThemeStore.js";
 import NotFoundPage from "./pages/NotFound.jsx";
+import LandingPage from "./pages/LandingPage.jsx";
 
 const App = () => {
   const { isLoading, authUser } = useAuthUser();
@@ -31,12 +32,13 @@ const App = () => {
         <Route
           path="/"
           element={
+            // If the user is authenticated and onboarded, show the home page with sidebar
             isAuthenticated && isOnboarded ? (
               <Layout showSidebar={true}>
                 <HomePage />
               </Layout>
             ) : (
-              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+              <LandingPage />
             )
           }
         />

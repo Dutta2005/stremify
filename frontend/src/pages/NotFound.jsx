@@ -1,15 +1,14 @@
 
 import { 
   Home, 
-  Search, 
-  RefreshCw, 
+  Search,  
   MessageCircle,
   Users,
-  MapPin,
-  AlertTriangle,
   Compass,
   BookOpen
 } from "lucide-react";
+
+import { Link } from "react-router";
 
 // Not Found Page Component
 const NotFoundPage = () => {
@@ -64,13 +63,13 @@ const NotFoundPage = () => {
 
         {/* Action buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button 
+          <Link 
+            to="/"
             className="btn btn-primary btn-lg"
-            onClick={() => window.location.href = '/'}
           >
             <Home className="size-5 mr-2" />
             Back to Home
-          </button>
+          </Link>
           
           <button 
             className="btn btn-outline btn-lg"
